@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+//const bootstrap = require('bootstrap');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -15,3 +15,8 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+mix.sass('resources/sass/app.scss', 'public/css');
+mix.scripts([
+        'resources/js/event-cal.js'
+    ], 'public/js/main.js')
+;
