@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EventCalendar;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('add_event', ['today'=>now()]);
+    return view('add_event', [
+        'today'=>now()
+    ]);
     return view('welcome');
 });
+
+Route::post('/post_events', [EventCalendar::class, 'add_event']);
