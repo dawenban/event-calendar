@@ -2,31 +2,33 @@
 Eventor
 @endsection
 <x-main>
-	<div class="container-fluid">
+	<div class="container">
 		<h3>Calendar</h3>
 		<hr>
 		<div class="row">
 			<div class="col-4">
 				<div class="row">
-					<div class="form-group">
-						<span class="col-form-label form-control">Event</span>
-						<input type="text" name="event_name" class="form-control">
+					<div class="row">
+						<div class="form-group mb-3">
+							<label class="form-label">Event</label>
+							<input type="text" name="event_name" class="form-control" form="event_form">
+						</div>
 					</div>
-					<div class="row align-middle">
+					<div class="row mb-3">
 						<div class="col-6">
 							<div class="form-group">
-								<span class="col-form-label form-control">From</span>
-								<input type="date" name="date_from" class="form-control">
+								<label class="form-label">From</label>
+								<input type="date" name="date_from" class="form-control form-control-sm" value="" form="event_form">
 							</div>
 						</div>
 						<div class="col-6">
 							<div class="form-group">
-								<span class="col-form-label form-control">To</span>
-								<input type="date" name="date_to" class="form-control">
+								<label class="form-label">To</label>
+								<input type="date" name="date_to" class="form-control form-control-sm" value="" form="event_form">
 							</div>
 						</div>
 					</div>
-					<div class="row">{{-- weekdays --}}
+					<div class="row mb-3">{{-- weekdays --}}
 						<div class="col w_day">
 							<div class="form-check">
 								<input type="checkbox" name="w_mon" value="Mon" class="form-check-input" id="w_1">
@@ -72,7 +74,8 @@ Eventor
 					</div>
 					<div class="row">
 						<div class="col">
-							<button class="btn btn-primary">Save</button>
+							<form id="event_form"></form>
+							<button class="btn btn-primary" id="save_btn">Save</button>
 						</div>
 					</div>
 				</div>
