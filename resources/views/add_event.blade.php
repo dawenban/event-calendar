@@ -94,8 +94,9 @@ Eventor
 									@php
 									$each = strtotime($firstDay . "+"."$i days");
 									@endphp
-								<tr>
-									<td data-eachDay='{{date("Y-m-d,N", $each)}}'>{{ date('j D', $each) }}</td>
+								<tr data-eachDay='{{date("Y-n-j", $each)}}'>
+									<td class="w-25">{{ date('j D', $each) }}</td>
+									<td></td>
 								</tr>
 								@endfor
 							</tbody>

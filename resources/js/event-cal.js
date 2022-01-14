@@ -36,17 +36,23 @@ $(function() {
 			contentType:false
 		})
 		.done(function(r) {
-			console.log("success",r);
-
+			notify('Event'+(r.dates.length>1?'s':'')+' successfully saved.', 'bg-success');
+			let rows = $("#event_org tbody>tr");
+			rows.each(function() {
+				$(this).removeClass('table-success');
+				if(r.dates.indexOf($(this).data('eachday').split(',')[0])>=0) {
+					$(this).addClass('table-success');
+					$(this).find('td:nth-child(2)').html(r.event_name);
+				}
+			});
 		})
 		.fail(function() {
-			console.log("error");
-		})
-		.always(function() {
-			console.log("complete");
+			notify('Something went wrong.', 'bg-danger');
 		});
 	});
+	toast = new bootstrap.Toast("#toast");
 });
+
 var daysOfweek = {1:'Mon', 2:'Tue', 3:'Wed', 4:'Thu', 5:'Fri', 6:'Sat', 7:'Sun'};
 var shortdate = new Intl.DateTimeFormat('default', { 
 	month: 'short',
@@ -59,3 +65,12 @@ var date = new Intl.DateTimeFormat('default', {
 	weekday: 'short',
 	year: 'numeric'
 });
+var toast;
+function notify(m,c){
+	if(!m){
+		return;
+	}
+	$("#toast").removeClass('bg-danger bg-success').addClass(c);
+	$("#toast div.toast-body").html(m);
+	toast.show();
+}
