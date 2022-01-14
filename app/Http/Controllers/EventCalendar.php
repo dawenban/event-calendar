@@ -21,7 +21,8 @@ class EventCalendar extends Controller
 		foreach($r->dates as $date){
 			$event = [
 				'EventName' => $r->event_name,
-				'Date' => $date
+				'Date' => $date,
+				'created_at' => now()
 			];
 			array_push($events, $event);
 		}

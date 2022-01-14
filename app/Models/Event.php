@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
 	// use HasFactory;
-	protected $fillable = ['EventName', 'Date'];
+	protected $fillable = ['EventName', 'Date', 'created_at'];
 }
